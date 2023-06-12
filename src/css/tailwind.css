@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.product-title {
+  @apply mt-[2px];
+}
+.product-title::before {
+  @apply border rounded-full h-[6px] w-[6px] bg-productTitle content-none absolute;
+}
+.product-title::after {
+  @apply border rounded-sm h-[2px] w-[21px] bg-productTitle content-none absolute;
+}
+
+.myBox {
+  --border-size: 2px;
+  --border-angle: 0turn;
+  background-image: conic-gradient(
+      from var(--border-angle),
+      #213,
+      #112 50%,
+      #213
+    ),
+    conic-gradient(from var(--border-angle), transparent 20%, #845ec2, #4519e8);
+  background-size: calc(100% - (var(--border-size) * 2))
+      calc(100% - (var(--border-size) * 2)),
+    cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-animation: bg-spin 4s linear infinite;
+  animation: bg-spin 4s linear infinite;
+}
+@-webkit-keyframes bg-spin {
+  to {
+    --border-angle: 1turn;
+  }
+}
+@keyframes bg-spin {
+  to {
+    --border-angle: 1turn;
+  }
+}
+
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0turn;
+}
+
+.product-title {
+  position: relative;
+}
+.product-title::after {
+  content: "";
+  background-color: #356af0;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%);
+  border: none;
+}
+.product-title::before {
+  content: "";
+  background-color: #356af0;
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 100%;
+  left: 50%;
+  top: -2px;
+  transform: translate(-50%);
+  border: none;
+}
+.box-light::after {
+  width: 1000px;
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  top: 0;
+  background: radial-gradient(circle, yellow 0%, red 35%) !important;
+}
